@@ -1,0 +1,32 @@
+.spacing{
+  margin-top: 20px
+}
+
+.required{
+  color: red;
+}
+
+.help-block{
+  color:red
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.article-header{
+  background-color: #a9cd2e;
+  color:white
+}
+
+label {
+  font-weight: bold;
+}
+
+.container{
+  margin-top: 50px;
+  border: 1px solid white;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 15px;
+}
