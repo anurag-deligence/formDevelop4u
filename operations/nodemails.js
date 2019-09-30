@@ -8,8 +8,8 @@ module.exports.nodeMail = (userObject, callback) => {
       secure: false,
       port: 25,
       auth: {
-        user: 'aky7503051815@gmail.com',
-        pass: 'anuragYadav75'
+        user: 'anurag.deligence@gmail.com',
+        pass: '*******'
       },
       tls: {
         rejectUnauthorized: false
