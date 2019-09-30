@@ -1,0 +1,14 @@
+.container-fluid{
+  padding:30px
+}
+
+.area1{
+  padding: 20px 50px
+}
+
+.listManaging{
+  margin: 10px 0px 20px 0px;
+  padding: 20px;
+  border: 1px solid white;
+  box-shadow: 2px 2px 2px 2px grey;
+}

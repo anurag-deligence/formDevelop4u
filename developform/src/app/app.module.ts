@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
@@ -8,16 +8,18 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterProjectComponent } from './components/register-project/register-project.component';
+import { GetListedComponent } from './components/get-listed/get-listed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterProjectComponent
+    RegisterProjectComponent,
+    GetListedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     NgFlashMessagesModule.forRoot(),
     HttpClientModule,
     NgxUiLoaderModule

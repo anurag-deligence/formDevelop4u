@@ -14,14 +14,13 @@ const PDSchema = new Schema({
   locationPref: { type: String },
   technologyPref: { type: String },
   projectDetails: { type: String, required: true },
-  file: { type: String },
+  filename: { type: String },
+  filepath: { type: String },
   name: { type: String, required: true },
   email: { type: String, required: true },
   position: { type: String, required: true },
   organization: { type: String, required: true },
-  location: { type: String, required: true },
-  verify: { type: Boolean, required: true }
-
+  location: { type: String, required: true }
 })
 
 const PD = mongoose.model('ProjectDetails', PDSchema);

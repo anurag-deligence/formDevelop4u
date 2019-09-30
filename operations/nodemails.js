@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 //require('dotenv').config();
 module.exports.nodeMail = (userObject, callback) => {
+
   nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -16,9 +17,11 @@ module.exports.nodeMail = (userObject, callback) => {
     })
     let mailOptions = {
       from: 'aky7503051815@gmail.com',
-      to: userObject,
+      to: userObject.email,
       subject: "classmate.com",
-      html: '<p>Click <a href="http://localhost:4200/forgetpassword/' + userObject + '">here</a> to reset your password</p>"'
+      html: '<p>The Details are :- </p><p>Project Type :- ' + userObject.projectType + '</p><p>Budget :- ' + userObject.budget + '</p><p>Timeline :- ' + userObject.timeline + '</p><p>Get Started :- ' + userObject.getStarted + '</p><p>Project Details :- ' + userObject.projectDetails + '</p>'
+      // <p>Location Preference :- ' + userObject.locationPref + '</p>'
+      //  html: '<p>Click <a href="http://localhost:4200/' + userObject + '">here</a> to reset your password</p>"'
     };
     transporter.sendMail(mailOptions, callback);
   })

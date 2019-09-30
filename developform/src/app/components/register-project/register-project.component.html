@@ -1,3 +1,9 @@
+<div class="container-fluid">
+  <div class="d-flex flex-row-reverse">
+    <button routerLink="/" class="btn btn-primary btn-lg">Get Listed</button>
+  </div>
+</div>
+
 <div class="container">
   <div class="container-inner">
     <div class="article-header">
@@ -12,83 +18,103 @@
     </div>
     <div class="form">
       <ng-flash-message></ng-flash-message>
-      <form (ngSubmit)="projectRegister()" #projectRegisterLR="ngForm">
-        <div class="spacing">
+      <form (ngSubmit)="projectRegister()" [formGroup]="projectRegisterLR">
+        <div class="form-group spacing">
           <label for="projectType">Project Type (e.g. Mobile & Web App Development or Blockchain App
             Development)<span class="required">*</span></label>
-          <input type="text" class="form-control" id="projectType" ngModel name='projectType' #projectType='ngModel'
-            required>
-          <span class="help-block" *ngIf="!projectType.valid && projectType.touched">Please provide a value of Project
+          <input type="text" class="form-control" id="projectType" formControlName='projectType'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('projectType').valid && projectRegisterLR.get('projectType').touched ">Please
+            provide a value of Project
             Type (e.g. Mobile & Web App Development or Blockchain App Development)</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="budget">Budget (e.g. $40K or $6K per month)<span class="required">*</span></label>
-          <input type="text" class="form-control" id="budget" ngModel name='budget' #budget='ngModel' required>
-          <span class="help-block" *ngIf="!budget.valid && budget.touched">Please provide a value of Budget (e.g. $40K
+          <input type="text" class="form-control" id="budget" formControlName='budget'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('budget').valid && projectRegisterLR.get('budget').touched ">Please provide a
+            value of Budget (e.g. $40K
             or $6K per month)</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="timeline">Timeline (How soon you want to get the project completed)<span
               class="required">*</span></label>
-          <input type="text" class="form-control" id="timeline" ngModel name='timeline' #timeline='ngModel' required>
-          <span class="help-block" *ngIf="!timeline.valid && timeline.touched">Please provide a value of Timeline (How
+          <input type="text" class="form-control" id="timeline" formControlName='timeline'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('timeline').valid && projectRegisterLR.get('timeline').touched ">Please
+            provide a value of Timeline (How
             soon you want to get the project completed)</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="getStarted">When you want to get started (e.g. ASAP, after 2 months)<span
               class="required">*</span></label>
-          <input type="text" class="form-control" id="getStarted" ngModel name='getStarted' #getStarted='ngModel'
-            required>
-          <span class="help-block" *ngIf="!getStarted.valid && getStarted.touched">Please provide a value of When you
+          <input type="text" class="form-control" id="getStarted" formControlName='getStarted'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('getStarted').valid && projectRegisterLR.get('getStarted').touched ">Please
+            provide a value of When you
             want to get started (e.g. ASAP, after 2 months)</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="locationPref">Location Preferences (if any)</label>
-          <input type="text" class="form-control" id="locationPref" ngModel name='locationPref'>
+          <input type="text" class="form-control" id="locationPref" formControlName='locationPref'>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="technologyPref">Technology Preference (if any)</label>
-          <input type="text" class="form-control" id="technologyPref" ngModel name='technologyPref'>
+          <input type="text" class="form-control" id="technologyPref" formControlName='technologyPref'>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="projectDetails">Project Details<span class="required">*</span></label>
-          <input type="text" class="form-control" id="projectDetails" ngModel name='projectDetails'
-            #projectDetails='ngModel' required>
-          <span class="help-block" *ngIf="!projectDetails.valid && projectDetails.touched">Please provide a value of
+          <input type="text" class="form-control" id="projectDetails" formControlName='projectDetails'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('projectDetails').valid && projectRegisterLR.get('projectDetails').touched ">Please
+            provide a value of
             Project Details</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="file">Do you have mockups/Designs/Detailed Requirement Document available? If yes, please upload.
             (Max allowed file size 35 MB)</label>
-          <input type="file" name="image" (change)="updatePhoto($event)" />
+          <span *ngIf="id !== undefined">
+            <p *ngIf="detail.filename"><b>Previous File:- </b>{{detail.filename}}</p>
+          </span>
+          <!-- <input type="text" class="form-control" id="filename" formControlName="filename" readonly> -->
+          <input type="file" name="file" id="file" (change)="updateFile($event)" />
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="name">Your Name<span class="required">*</span></label>
-          <input type="text" class="form-control" id="name" ngModel name='name' #name='ngModel' required>
-          <span class="help-block" *ngIf="!name.valid && name.touched">Please provide a name.</span>
+          <input type="text" class="form-control" id="name" formControlName='name'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('name').valid && projectRegisterLR.get('name').touched ">Please provide a
+            name.</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="email">Email address<span class="required">*</span></label>
-          <input type="text" class="form-control" id="email" ngModel name='email' #email='ngModel' required email>
-          <span class="help-block" *ngIf="!email.valid && email.touched">Please provide a email address.</span>
+          <input type="text" class="form-control" id="email" formControlName='email'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('email').valid && projectRegisterLR.get('email').touched ">Please provide a
+            email address.</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="position">Position<span class="required">*</span></label>
-          <input type="text" class="form-control" id="position" ngModel name='position' #position='ngModel' required>
-          <span class="help-block" *ngIf="!position.valid && position.touched">Please provide your
+          <input type="text" class="form-control" id="position" formControlName='position'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('position').valid && projectRegisterLR.get('position').touched ">Please
+            provide your
             position.</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="organization">Organization<span class="required">*</span></label>
-          <input type="text" class="form-control" id="organization" ngModel name='organization' #organization='ngModel'
-            required>
-          <span class="help-block" *ngIf="!organization.valid && organization.touched">Please provide your
+          <input type="text" class="form-control" id="organization" formControlName='organization'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('organization').valid && projectRegisterLR.get('organization').touched ">Please
+            provide your
             organization.</span>
         </div>
-        <div class="spacing">
+        <div class="form-group spacing">
           <label for="location">Your location<span class="required">*</span></label>
-          <input type="text" class="form-control" id="location" ngModel name='location' #location='ngModel' required>
-          <span class="help-block" *ngIf="!location.valid && location.touched">Please provide your location.</span>
+          <input type="text" class="form-control" id="location" formControlName='location'>
+          <span class="help-block"
+            *ngIf="!projectRegisterLR.get('location').valid && projectRegisterLR.get('location').touched ">Please
+            provide your location.</span>
         </div>
         <ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
         <button type="submit" name="button1" id="button1" [disabled]="!projectRegisterLR.valid"
